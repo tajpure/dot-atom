@@ -13,6 +13,7 @@
     ]
     disabledPackages: [
       "vim-mode"
+      "remember-session"
     ]
   "one-dark-ui":
     layoutMode: "Compact"
@@ -26,10 +27,7 @@
     fullScreen: false
     projects: [
       "C:\\Users\\Administrator\\Dropbox\\workspace\\algorithm-kit\\src\\com"
-      "C:\\Users\\Administrator\\.atom\\packages\\seti-monokai"
-      "C:\\Users\\Administrator\\.atom\\packages\\minimap"
     ]
-    treeSize: 222
   "remember-session":
     x: 1432
     y: -8
