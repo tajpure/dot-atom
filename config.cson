@@ -1,7 +1,7 @@
 "*":
   editor:
-    fontSize: 12
     invisibles: {}
+    fontSize: 13
   "exception-reporting":
     userId: "d31e0d06-76a9-3633-5c8f-ee5b6690b373"
   welcome:
@@ -11,9 +11,30 @@
       "one-dark-ui"
       "seti-monokai"
     ]
+    disabledPackages: [
+      "vim-mode"
+    ]
   "one-dark-ui":
     layoutMode: "Compact"
   minimap: {}
+  "save-session":
+    dataSaveFolder: "C:\\Users\\Administrator\\.atom\\packages\\save-session\\projects"
+    windowX: 1432
+    windowY: -8
+    windowWidth: 1456
+    windowHeight: 916
+    fullScreen: false
+    projects: [
+      "C:\\Users\\Administrator\\Dropbox\\workspace\\algorithm-kit\\src\\com"
+      "C:\\Users\\Administrator\\.atom\\packages\\seti-monokai"
+      "C:\\Users\\Administrator\\.atom\\packages\\minimap"
+    ]
+    treeSize: 222
+  "remember-session":
+    x: 1432
+    y: -8
+    width: 1456
+    height: 916
 ".plain.text":
   editor:
     autoIndent: true
