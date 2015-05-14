@@ -6,7 +6,7 @@ my .atom config for Atom editor.
 ./install
 ```
 # Screenshot
-![Atom](./atom.png)
+![Atom](./screenshot.png)
 
 # License
 MIT
