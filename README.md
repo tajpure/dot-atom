@@ -1,5 +1,5 @@
 # dotatom
-my .atom config for Atom editor.
+my .atom configuration for Atom editor.
 
 # How to install?
 ```shell
