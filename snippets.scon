@@ -1,0 +1,764 @@
+############# HTML #############
+'.source.html':
+  'HTML Comment':
+    'prefix': '--'
+    'body': '<!-- $1 -->'
+
+
+#############  CSS #############
+'.source.scss':
+  'Multiline comment':
+    'prefix': '/*'
+    'body': '/* $1 */'
+
+
+#############  JS  #############
+'.source.js':
+  'Anon Init Function':
+    'prefix': 'init'
+    'body': '(function(){\n\n\tfunction init(){\n\t\t$1\n\t}\n\n\tinit();\n\n})();'
+
+
+
+#############  Scheme  #############
+'.source.scheme':
+  'editor':
+    'commentStart': ';'
+    'increaseIndentPattern': '^.*\\(.*[^)"]$'
+
+
+#############  Haskell  #############
+'.source.haskell':
+  'Definition':
+    'prefix': '='
+    'body': '${1:name} ${2:pattern}${2/.+/ /}= ${0:definition}'
+  'Function':
+    'prefix': 'fun'
+    'body': '${1:name} :: ${2:Type}\n${1} ${3:pattern}${3/.+/ /}${4/.+/= /}${4:definition}'
+  '#!/usr/bin/env…':
+    'prefix': '#!'
+    'body': '#!/usr/bin/env ${1:runhaskell}\n'
+  'Lambda Expression':
+    'prefix': '\\'
+    'body': '\\${1:pattern} -> ${0:expression}'
+  'Left Arrow':
+    'prefix': '<'
+    'body': '${1:name} <- ${0:expression}'
+  'Main':
+    'prefix': 'main'
+    'body': 'module Main where\n\nmain :: IO ()\nmain = ${0:putStrLn "Hello World"}\n'
+  'Right Arrow':
+    'prefix': '>'
+    'body': '${1:expression} -> ${0:expression}'
+  'Type Signature':
+    'prefix': '::'
+    'body': '${1:name} :: ${0:Type}'
+  'case … of …':
+    'prefix': 'case'
+    'body': 'case ${1:expression} of\n\t${2:pattern} -> ${3:expression}\n\t${4:otherwise} -> ${5:expression}'
+  'class …':
+    'prefix': 'cla'
+    'body': 'class ${1:Class} where\n\t${0:definition}'
+  'data …':
+    'prefix': 'dat'
+    'body': 'data ${1:Type} = ${0:Other}'
+  'do …':
+    'prefix': 'do'
+    'body': 'do\n\t${1:return ${0:expression}}'
+  'if … then … else …':
+    'prefix': 'if'
+    'body': 'if ${1:condition}\n\tthen ${2:expression}\n\telse ${3:expression}'
+  'import … hiding …':
+    'prefix': 'imph'
+    'body': 'import ${1:Module}${2/.+/ hiding (/}${2:function}${2/.+/)/}$0'
+  'import …':
+    'prefix': 'imp'
+    'body': 'import ${1:Module}${2/.+/ (/}${2:function}${2/.+/)/}$0'
+  'import qualified …':
+    'prefix': 'impq'
+    'body': 'import qualified ${1:Module}${2/.+/ as /}${2:Mod}${3/.+/ (/}${3:function}${3/.+/)/}$0'
+  'instance …':
+    'prefix': 'ins'
+    'body': 'instance ${1:Class} ${2:Type} where\n\t${0:definition}'
+  'let …':
+    'prefix': 'let'
+    'body': 'let\n\t${1:name} = ${2:expression}\n\tin ${0:expression}'
+  'newtype …':
+    'prefix': 'new'
+    'body': 'newtype ${1:Type} = ${0:Other}'
+  'type …':
+    'prefix': 'typ'
+    'body': 'type ${1:Type} = ${0:Other}'
+  'where …':
+    'prefix': 'where'
+    'body': 'where\n\t${0:definitions}'
+'.source.haskell:not(.comment)':
+  'Guard':
+    'prefix': '|'
+    'body': '| ${1:predicate} = ${0:definition}'
+'.source.haskell .comment.block':
+  'Haddock Postfix':
+    'prefix': '|'
+    'body': '| ${0:documentation}'
+  'Haddock Prefix':
+    'prefix': '^'
+    'body': '^ ${0:documentation}'
+'.source.haskell .constant.language.nil':
+  'List Comprehension':
+    'prefix': '['
+    'body': '[ ${1:expression} | ${2:name} <- ${3:expression}${4/.+/, /}${4:condition} '
+'.source.haskell .meta.function.type':
+  'Type Constraint':
+    'prefix': '='
+    'body': '(${1:Class}) => $0'
+'.source.haskell .meta.type':
+  'deriving …':
+    'prefix': 'der'
+    'body': 'deriving (${0:Class})'
+
+#############  JAVA  #############
+'.source.java, .source.groovy':
+  'abstract':
+    'prefix': 'ab'
+    'body': 'abstract '
+  'case':
+    'prefix': 'cs'
+    'body': 'case $1:\n\t$2\n$0'
+  'catch':
+    'prefix': 'ca'
+    'body': 'catch (${1:Exception} ${2:e}) {\n\t$0\n}'
+  'class':
+    'prefix': 'cl'
+    'body': 'class ${1:MyClass} ${2:extends ${3:Parent} }${4:implements ${5:Interface} }{\n\t$6\n}'
+  'else if':
+    'prefix': 'elif'
+    'body': 'else if ($1) {\n\t$0\n}'
+  'do while':
+    'prefix': 'dow'
+    'body': 'do {\n\t$1\n} while ($2);$0'
+  'else':
+    'prefix': 'el'
+    'body': 'else {\n\t$0\n}'
+  'final':
+    'prefix': 'fi'
+    'body': 'final '
+  'finally':
+    'prefix': 'fy'
+    'body': 'finally {\n\t$0\n}'
+  'for':
+    'prefix': 'for'
+    'body': 'for ($1; $2; $3) {\n\t$0\n}'
+  'if':
+    'prefix': 'if'
+    'body': 'if ($1) {\n\t$0\n}'
+  'import':
+    'prefix': 'im'
+    'body': 'import '
+  'interface':
+    'prefix': 'in'
+    'body': 'interface ${1:MyInterface} ${2:extends ${3:Parent} }{\n\t$0\n}'
+  'private':
+    'prefix': 'pr'
+    'body': 'private '
+  'protected':
+    'prefix': 'po'
+    'body': 'protected '
+  'public':
+    'prefix': 'pu'
+    'body': 'public '
+  'return':
+    'prefix': 're'
+    'body': 'return '
+  'static':
+    'prefix': 'st'
+    'body': 'static '
+  'switch':
+    'prefix': 'sw'
+    'body': 'switch ($1) {\n\t$0\n}'
+  'synchronized':
+    'prefix': 'sy'
+    'body': 'synchronized '
+  'throw new':
+    'prefix': 'tn'
+    'body': 'throw new $0'
+  'throw':
+    'prefix': 'th'
+    'body': 'throw $0'
+  'try':
+    'prefix': 'tr'
+    'body': 'try {\n\t$0\n}'
+  'variable':
+    'prefix': 'v'
+    'body': '${1:String} ${2:var}${3: = ${0:null}};'
+'.source.java':
+  'break':
+    'prefix': 'br'
+    'body': 'break;\n'
+  'constant string':
+    'prefix': 'cos'
+    'body': 'static public final String ${1:var} = "$2";$0'
+  'constant':
+    'prefix': 'co'
+    'body': 'static public final ${1:String} ${2:var} = $3;$0'
+  'default':
+    'prefix': 'de'
+    'body': 'default:\n\t$0'
+  'for (each)':
+    'prefix': 'fore'
+    'body': 'for ($1 : $2) {\n\t$0\n}'
+  'import junit.framework.TestCase;':
+    'prefix': 'imt'
+    'body': 'import junit.framework.TestCase;\n$0'
+  'java.beans.':
+    'prefix': 'j.b'
+    'body': 'java.beans.'
+  'java.io.':
+    'prefix': 'j.i'
+    'body': 'java.io.'
+  'java.math.':
+    'prefix': 'j.m'
+    'body': 'java.math.'
+  'java.net.':
+    'prefix': 'j.n'
+    'body': 'java.net.'
+  'java.util.':
+    'prefix': 'j.u'
+    'body': 'java.util.'
+  'method (main)':
+    'prefix': 'main'
+    'body': 'public static void main(String[] args) {\n\t$0\n}'
+  'method':
+    'prefix': 'm'
+    'body': '${1:void} ${2:method}($3) ${4:throws $5 }{\n\t$0\n}\n'
+  'print':
+    'prefix': 'p'
+    'body': 'System.out.print($1);$0'
+  'println':
+    'prefix': 'pl'
+    'body': 'System.out.println($1);$0'
+  'test case':
+    'prefix': 'tc'
+    'body': 'public class ${1:MyTest} extends ${2:TestCase} {\n\t$0\n}'
+  'test':
+    'prefix': 't'
+    'body': 'public void test${1:Name}() throws Exception {\n\t$0\n}'
+  'while':
+    'prefix': 'wh'
+    'body': 'while ($1) {\n\t$0\n}'
+
+
+#############  Scala  #############
+'.source.scala':
+  'case class scaffolding':
+    'prefix': 'ccc'
+    'body': 'class ${1:Class}(${2/(\\S+\\s*:)/val $1/g}) {\n  override def hashCode = 0 ${2/(\\S+)\\s*:[^,]+(,?)/+ $1.##/g}\n  override def equals(other: Any) = $1.unapply(this) == $1.unapply(other)\n  override def canEqual(other: Any) = other.isInstanceOf[$1]\n}\n\nobject $1 {\n  def apply(${2:arguments}): $1 = new $1(${2/(\\S+)\\s*:[^,]+/$1/g})\n  def unapply(other: Any) = other match {\n    case x: $1 => import x._ ; Some(${2/(\\S+)\\s*:[^,]+/$1/g})\n    case _     => None\n  }\n}\n'
+  'case class':
+    'prefix': 'case class'
+    'body': 'case class $1${2:($3)} ${4:extends ${5:Any} }${6:{\n  $7\n\\}}$0'
+  'case':
+    'prefix': 'case'
+    'body': 'case ${1:_} => ${0}'
+  'class':
+    'prefix': 'class'
+    'body': 'class $1${2:($3)} ${4:extends ${5:Any} }{\n\t$0\n}'
+  'enumeration':
+    'prefix': 'enumeration'
+    'body': 'object ${1:MyEnumeration} extends Enumeration {\n  type $1 = Value\n  val ${2:${3:MyEnumeration1}, ${4:MyEnumeration2}} = Value\n}\n\n${5:import $1._}\n${0}'
+  'for - Block':
+    'prefix': 'for'
+    'body': 'for ($1 <- ${2:${3:0} to ${4:10}}) {\n\t$0\n}'
+  'for - Yield':
+    'prefix': 'for'
+    'body': 'for {\n  $1 <- ${2:${3:0} to ${4:10}}\n} yield $0'
+  'if':
+    'prefix': 'if'
+    'body': 'if ($1) {\n\t$2\n}\n'
+  'import mutable/immutable':
+    'prefix': 'impc'
+    'body': 'import scala.collection.{ mutable, immutable, generic }'
+  'lambda':
+    'prefix': 'lam'
+    'body': '($1) => ${2:{${3:}\\}}'
+  'left arrow':
+    'prefix': '<-'
+    'body': '${1:"${2}"} <- ${3:"${4}"}'
+  'main':
+    'prefix': 'main'
+    'body': 'def main(args: Array[String]): Unit = {\n  $1\n}\n'
+  'match':
+    'prefix': 'match'
+    'body': 'match {\n\tcase ${1:_} => $0\n}\n'
+  'method':
+    'prefix': 'def'
+    'body': 'def ${1:method}${2:(${4:arg}: ${5:Type})} = {\n\t${0}\n}'
+  'object with main method':
+    'prefix': 'omain'
+    'body': 'object $1 {\n  def main(args: Array[String]): Unit = {\n    $2\n  }\n}\n'
+  'object':
+    'prefix': 'object'
+    'body': 'object $1 ${2:extends ${3:Any} }{\n\t$0\n}'
+  'println':
+    'prefix': 'pl'
+    'body': 'println($0)'
+  'right arrow':
+    'prefix': '->'
+    'body': '${1:"${2}"} -> ${3:"${4}"}'
+  'script header':
+    'prefix': 'script'
+    'body': '#!/bin/sh\n  exec scala "\\$0" "\\$@"\n!#\n\n$1'
+  'shortcut - case class':
+    'prefix': 'cc'
+    'body': 'case class'
+  'shortcut - class':
+    'prefix': 'c'
+    'body': 'class'
+  'shortcut - enumeration':
+    'prefix': 'enum'
+    'body': 'enumeration'
+  'shortcut - match':
+    'prefix': 'm'
+    'body': 'match'
+  'shortcut - object':
+    'prefix': 'obj'
+    'body': 'object'
+  'shortcut - trait':
+    'prefix': 't'
+    'body': 'trait'
+  'toString':
+    'prefix': 'tostr'
+    'body': 'override def toString(): String =  $0 \n'
+  'trait':
+    'prefix': 'trait'
+    'body': 'trait $1 {\n\t$0\n}'
+  'try/catch':
+    'prefix': 'try'
+    'body': 'try { \n  ${1:// ...}\n} catch {\n  case e: Exception => $0\n}'
+  'with':
+    'prefix': 'with'
+    'body': 'with ${1:Any}'
+
+
+#############  Python  #############
+'.source.python':
+  '#!/usr/bin/env python':
+    'prefix': 'env'
+    'body': '#!/usr/bin/env python\n'
+  '# coding=utf-8':
+    'prefix': 'enc'
+    'body': '# coding=utf-8\n'
+  'Assert Equal':
+    'prefix': 'ase'
+    'body': 'self.assertEqual(${1:expected}, ${2:actual}${3:, \'${4:message}\'})$0'
+  'Assert Not Equal':
+    'prefix': 'asne'
+    'body': 'self.assertNotEqual(${1:expected}, ${2:actual}${3:, \'${4:message}\'})$0'
+  'Assert Raises':
+    'prefix': 'asr'
+    'body': 'self.assertRaises(${1:exception}, ${2:callable})$0'
+  'Assert True':
+      'prefix': 'ast'
+      'body': 'self.assertTrue(${1:actual}${2:, \'${3:message}\'})$0'
+  'Assert False':
+     'prefix': 'asf'
+     'body': 'self.assertFalse(${1:actual}${2:, \'${3:message}\'})$0'
+  'Assert Is':
+     'prefix': 'asi'
+     'body': 'self.assertIs(${1:expected}, ${2:actual}${3:, \'${4:message}\'})$0'
+  'Assert Is Not':
+     'prefix': 'asint'
+     'body': 'self.assertIsNot(${1:expected}, ${2:actual}${3:, \'${4:message}\'})$0'
+  'Assert Is None':
+     'prefix': 'asino'
+     'body': 'self.assertIsNone(${1:actual}${2:, \'${3:message}\'})$0'
+  'Assert Is Not None':
+     'prefix': 'asinno'
+     'body': 'self.assertIsNotNone(${1:actual}${2:, \'${3:message}\'})$0'
+  'Assert In':
+     'prefix': 'asin'
+     'body': 'self.assertIn(${1:needle}, ${2:haystack}${3:, \'${4:message}\'})$0'
+  'Assert Not In':
+     'prefix': 'asni'
+     'body': 'self.assertNotIn(${1:needle}, ${2:haystack}${3:, \'${4:message}\'})$0'
+  'Assert':
+    'prefix': 'as'
+    'body': 'self.assert_(${1:boolean expression}${2:, \'${3:message}\'})$0'
+  'Fail (a test)':
+    'prefix': 'fail'
+    'body': 'self.fail(\'${1:message}\')$0'
+  'New Class':
+    'prefix': 'class'
+    'body': 'class ${1:ClassName}(${2:object}):\n\t"""${3:docstring for $1}"""\n\tdef __init__(self, ${4:arg}):\n\t\t${5:super($1, self).__init__()}\n\t\tself.arg = arg\n\t\t$0'
+  'New Method':
+    'prefix': 'defs'
+    'body': 'def ${1:mname}(self, ${2:arg}):\n\t${3:pass}'
+  'New Function':
+    'prefix': 'def'
+    'body': 'def ${1:fname}(${2:arg}):\n\t${3:pass}'
+  'New Property':
+    'prefix': 'property'
+    'body': 'def ${1:foo}():\n    doc = "${2:The $1 property.}"\n    def fget(self):\n        ${3:return self._$1}\n    def fset(self, value):\n        ${4:self._$1 = value}\n    def fdel(self):\n        ${5:del self._$1}\n    return locals()\n$1 = property(**$1())$0'
+  'if':
+    'prefix': 'if'
+    'body': 'if ${1:condition}:\n\t${2:pass}'
+  'for':
+    'prefix': 'for'
+    'body': 'for ${1:value} in ${2:variable}:\n\t${3:pass}'
+  'while':
+    'prefix': 'while'
+    'body': 'while ${1:condition}:\n\t${2:pass}'
+  'Try/Except/Else/Finally':
+    'prefix': 'try'
+    'body': 'try:\n\t${1:pass}\nexcept${2: ${3:Exception} as ${4:e}}:\n\t${5:raise}\nelse:\n\t${6:pass}\nfinally:\n\t${7:pass}'
+  'Try/Except/Else':
+    'prefix': 'try'
+    'body': 'try:\n\t${1:pass}\nexcept ${2:Exception} as ${3:e}:\n\t${4:raise $3}\nelse:\n\t${5:pass}'
+  'Try/Except/Finally':
+    'prefix': 'try'
+    'body': 'try:\n\t${1:pass}\nexcept ${2:Exception} as ${3:e}:\n\t${4:raise $3}\nfinally:\n\t${5:pass}'
+  'Try/Except':
+    'prefix': 'try'
+    'body': 'try:\n\t${1:pass}\nexcept ${2:Exception} as ${3:e}:\n\t${4:raise $3}'
+  'List Comprehension':
+    'prefix': 'lc'
+    'body': '[${1:value} for ${2:value} in ${3:variable}]'
+  'List Comprehension If Else':
+    'prefix': 'lcie'
+    'body': '[${1:value} if ${2:condition} else ${3:condition} for ${4:value} in ${5:variable}]'
+  'Dictionary Comprehension':
+    'prefix': 'dc'
+    'body': '{${1:key}: ${2:value} for ${3:key}, ${4:value} in ${5:variable}}'
+  'PDB set trace':
+    'prefix': 'pdb'
+    'body': 'import pdb; pdb.set_trace()\n'
+  'iPDB set trace':
+    'prefix': 'ipdb'
+    'body': 'import ipdb; ipdb.set_trace()\n'
+  '__magic__':
+    'prefix': '__'
+    'body': '__${1:init}__'
+  'if __name__ == \'__main__\'':
+    'prefix': 'ifmain'
+    'body': 'if __name__ == \'__main__\':\n\t${1:main()}$0'
+'.source.python:not(.string)':
+  'self':
+    'prefix': '.'
+    'body': 'self.'
+
+
+#############  Ruby  #############
+'.source.ruby, .dyn.caret.begin.document':
+  '#!/usr/bin/env ruby -wKU':
+    'prefix': 'rb'
+    'body': '#!/usr/bin/env ruby -wKU\n'
+'.source.ruby':
+  '# encoding: UTF-8':
+    'prefix': 'utf8'
+    'body': '# encoding: ${1:UTF-8}\n'
+  'if … else … end':
+    'prefix': 'ife'
+    'body': 'if ${1:condition}\n\t$2\nelse\n\t$3\nend'
+  'if … end':
+    'prefix': 'if'
+    'body': 'if ${1:condition}\n\t$0\nend'
+  'case … end':
+    'prefix': 'case'
+    'body': 'case ${1:object}\nwhen ${2:condition}\n\t$0\nend'
+  'Add ‘# =>’ Marker':
+    'prefix': '#'
+    'body': '# => '
+  'Benchmark.bmbm do .. end':
+    'prefix': 'bm-'
+    'body': 'TESTS = ${1:10_000}\nBenchmark.bmbm do |results|\n  $0\nend'
+  'Dir.glob("..") { |file| .. }':
+    'prefix': 'Dir'
+    'body': 'Dir.glob(${1:"${2:dir/glob/*}"}) { |${3:file}| $0 }'
+  'Dir[".."]':
+    'prefix': 'Dir'
+    'body': 'Dir[${1:"${2:glob/**/*.rb}"}]'
+  'File.foreach ("..") { |line| .. }':
+    'prefix': 'File'
+    'body': 'File.foreach(${1:"${2:path/to/file}"}) { |${3:line}| $0 }'
+  'File.read("..")':
+    'prefix': 'File'
+    'body': 'File.read(${1:"${2:path/to/file}"})'
+  'Hash.new { |hash, key| hash[key] = .. }':
+    'prefix': 'Hash'
+    'body': 'Hash.new { |${1:hash}, ${2:key}| ${1:hash}[${2:key}] = $0 }'
+  'Array.new( .. )':
+    'prefix': 'arr'
+    'body': 'Array.new(${1:len,val})\n$0'
+  'Array.new( .. ) { |index| .. }':
+    'prefix': 'arri'
+    'body': 'Array.new(${1:len}) { |${2:i}| $0 }'
+  'Marshal.dump(.., file)':
+    'prefix': 'Md'
+    'body': 'File.open(${1:"${2:path/to/file}.dump"}, "wb") { |${3:file}| Marshal.dump(${4:obj}, ${3:file}) }'
+  'Marshal.load(obj)':
+    'prefix': 'Ml'
+    'body': 'File.open(${1:"${2:path/to/file}.dump"}, "rb") { |${3:file}| Marshal.load(${3:file}) }'
+  'PStore.new( .. )':
+    'prefix': 'Pn-'
+    'body': 'PStore.new(${1:"${2:file_name.pstore}"})'
+  'YAML.dump(.., file)':
+    'prefix': 'Yd-'
+    'body': 'File.open(${1:"${2:path/to/file}.yaml"}, "w") { |${3:file}| YAML.dump(${4:obj}, ${3:file}) }'
+  'YAML.load(file)':
+    'prefix': 'Yl-'
+    'body': 'File.open(${1:"${2:path/to/file}.yaml"}) { |${3:file}| YAML.load(${3:file}) }'
+  'alias_method ..':
+    'prefix': 'am'
+    'body': 'alias_method :${1:new_name}, :${0:old_name}'
+  'all? { |e| .. }':
+    'prefix': 'all'
+    'body': 'all? { |${1:e}| $0 }'
+  'any? { |e| .. }':
+    'prefix': 'any'
+    'body': 'any? { |${1:e}| $0 }'
+  'application { .. }':
+    'prefix': 'app'
+    'body': 'if __FILE__ == \\$PROGRAM_NAME\n\t$0\nend'
+  'assert_nothing_raised(..) { .. }':
+    'prefix': 'asnr'
+    'body': 'assert_nothing_raised(${1:Exception}) { $0 }'
+  'assert_nothing_thrown { .. }':
+    'prefix': 'asnt'
+    'body': 'assert_nothing_thrown { $0 }'
+  'assert_raise(..) { .. }':
+    'prefix': 'asr'
+    'body': 'assert_raise(${1:Exception}) { $0 }'
+  'assert_throws(..) { .. }':
+    'prefix': 'ast'
+    'body': 'assert_throws(:${1:expected}) { $0 }'
+  'attr_accessor ..':
+    'prefix': 'rw'
+    'body': 'attr_accessor :${0:attr_names}'
+  'attr_reader ..':
+    'prefix': 'r'
+    'body': 'attr_reader :${0:attr_names}'
+  'attr_writer ..':
+    'prefix': 'w'
+    'body': 'attr_writer :${0:attr_names}'
+  'ClassName = Struct .. do .. end':
+    'prefix': 'cla'
+    'body': '$1 = Struct.new(:${2:attr_names}) do\n\tdef ${3:method_name}\n\t\t$0\n\tend\n\t\n\t\nend'
+  'class << self .. end':
+    'prefix': 'cla'
+    'body': 'class << ${1:self}\n\t$0\nend'
+  'class .. end':
+    'prefix': 'cla'
+    'body': 'class $1\n\t$0\nend'
+  'class_from_name()':
+    'prefix': 'clafn'
+    'body': 'split("::").inject(Object) { |par, const| par.const_get(const) }'
+  'classify { |e| .. }':
+    'prefix': 'cl'
+    'body': 'classify { |${1:e}| $0 }'
+  'collect { |e| .. }':
+    'prefix': 'col'
+    'body': 'collect { |${1:e}| $0 }'
+  'deep_copy(..)':
+    'prefix': 'deec'
+    'body': 'Marshal.load(Marshal.dump(${0:obj_to_copy}))'
+  'def … end':
+    'prefix': 'def'
+    'body': 'def ${1:method_name}\n\t$0\nend'
+  'def method_missing .. end':
+    'prefix': 'defmm'
+    'body': 'def method_missing(meth, *args, &blk)\n\t$0\nend'
+  'def self .. end':
+    'prefix': 'defs'
+    'body': 'def self.${1:class_method_name}\n\t$0\nend'
+  'def test_ .. end':
+    'prefix': 'deft'
+    'body': 'def test_${1:case_name}\n\t$0\nend'
+  'def_delegator ..':
+    'prefix': 'defd'
+    'body': 'def_delegator :${1:@del_obj}, :${2:del_meth}, :${3:new_name}'
+  'def_delegators ..':
+    'prefix': 'defds'
+    'body': 'def_delegators :${1:@del_obj}, :${0:del_methods}'
+  'delete_if { |e| .. }':
+    'prefix': 'deli'
+    'body': 'delete_if { |${1:e}| $0 }'
+  'detect { |e| .. }':
+    'prefix': 'det'
+    'body': 'detect { |${1:e}| $0 }'
+  'directory()':
+    'prefix': 'dir'
+    'body': 'File.dirname(__FILE__)'
+  'Insert do |variable| … end':
+    'prefix': 'do'
+    'body': 'do${1: |${2:variable}|}\n\t$0\nend'
+  'each { |e| .. }':
+    'prefix': 'ea'
+    'body': 'each { |${1:e}| $0 }'
+  'each_byte { |byte| .. }':
+    'prefix': 'eab'
+    'body': 'each_byte { |${1:byte}| $0 }'
+  'each_char { |chr| .. }':
+    'prefix': 'eac-'
+    'body': 'each_char { |${1:chr}| $0 }'
+  'each_cons(..) { |group| .. }':
+    'prefix': 'eac-'
+    'body': 'each_cons(${1:2}) { |${2:group}| $0 }'
+  'each_index { |i| .. }':
+    'prefix': 'eai'
+    'body': 'each_index { |${1:i}| $0 }'
+  'each_key { |key| .. }':
+    'prefix': 'eak'
+    'body': 'each_key { |${1:key}| $0 }'
+  'each_line { |line| .. }':
+    'prefix': 'eal'
+    'body': 'each_line$1 { |${2:line}| $0 }'
+  'each_pair { |name, val| .. }':
+    'prefix': 'eap'
+    'body': 'each_pair { |${1:name}, ${2:val}| $0 }'
+  'each_slice(..) { |group| .. }':
+    'prefix': 'eas-'
+    'body': 'each_slice(${1:2}) { |${2:group}| $0 }'
+  'each_value { |val| .. }':
+    'prefix': 'eav'
+    'body': 'each_value { |${1:val}| $0 }'
+  'each_with_index { |e, i| .. }':
+    'prefix': 'eawi'
+    'body': 'each_with_index { |${1:e}, ${2:i}| $0 }'
+  'elsif ...':
+    'prefix': 'elsif'
+    'body': 'elsif ${1:condition}\n\t$0'
+  'extend Forwardable':
+    'prefix': 'Forw'
+    'body': 'extend Forwardable'
+  'find { |e| .. }':
+    'prefix': 'fin'
+    'body': 'find { |${1:e}| $0 }'
+  'find_all { |e| .. }':
+    'prefix': 'fina'
+    'body': 'find_all { |${1:e}| $0 }'
+  'flatten_once()':
+    'prefix': 'flao'
+    'body': 'inject(Array.new) { |${1:arr}, ${2:a}| ${1:arr}.push(*${2:a}) }'
+  'grep(/pattern/) { |match| .. }':
+    'prefix': 'gre'
+    'body': 'grep(${1:/${2:pattern}/}) { |${3:match}| $0 }'
+  'Hash Pair — :key => "value"':
+    'prefix': ':'
+    'body': ':${1:key} => ${2:"${3:value}"}${4:, }'
+  'include Comparable ..':
+    'prefix': 'Comp'
+    'body': 'include Comparable\n\ndef <=>(other)\n\t$0\nend'
+  'include Enumerable ..':
+    'prefix': 'Enum'
+    'body': 'include Enumerable\n\ndef each(&block)\n\t$0\nend'
+  'loop { .. }':
+    'prefix': 'loo'
+    'body': 'loop { $0 }'
+  'map { |e| .. }':
+    'prefix': 'map'
+    'body': 'map { |${1:e}| $0 }'
+  'map_with_index { |e, i| .. }':
+    'prefix': 'mapwi-'
+    'body': 'enum_with_index.map { |${1:e}, ${2:i}| $0 }'
+  'max { |a, b| .. }':
+    'prefix': 'max'
+    'body': 'max { |a, b| $0 }'
+  'min { |a, b| .. }':
+    'prefix': 'min'
+    'body': 'min { |a, b| $0 }'
+  'module .. module_function .. end':
+    'prefix': 'mod'
+    'body': 'module $1\n\tmodule_function\n\t\n\t$0\nend'
+  'module .. end':
+    'prefix': 'mod'
+    'body': 'module $1\n\t$0\nend'
+  'namespace :.. do .. end':
+    'prefix': 'nam'
+    'body': 'namespace :$1 do\n\t$0\nend'
+  'partition { |e| .. }':
+    'prefix': 'par'
+    'body': 'partition { |${1:e}| $0 }'
+  'path_from_here( .. )':
+    'prefix': 'patfh'
+    'body': 'File.join(File.dirname(__FILE__), *%w[${1:rel path here}])'
+  'randomize()':
+    'prefix': 'ran'
+    'body': 'sort_by { rand }'
+  'reject { |e| .. }':
+    'prefix': 'rej'
+    'body': 'reject { |${1:e}| $0 }'
+  'require ".."':
+    'prefix': 'req'
+    'body': 'require "$0"'
+  'require "tc_.." ..':
+    'prefix': 'ts'
+    'body': 'require "test/unit"\n\nrequire "tc_${1:test_case_file}"\nrequire "tc_${2:test_case_file}"\n'
+  'require_gem ".."':
+    'prefix': 'reqg-'
+    'body': 'require "$0"'
+  'results.report(..) { .. }':
+    'prefix': 'rep'
+    'body': 'results.report("${1:name}:") { TESTS.times { $0 } }'
+  'reverse_each { |e| .. }':
+    'prefix': 'reve'
+    'body': 'reverse_each { |${1:e}| $0 }'
+  'scan(/../) { |match| .. }':
+    'prefix': 'sca'
+    'body': 'scan(/${1:pattern}/) { |${2:match}| $0 }'
+  'select { |e| .. }':
+    'prefix': 'sel'
+    'body': 'select { |${1:e}| $0 }'
+  'singleton_class()':
+    'prefix': 'sinc'
+    'body': 'class << self; self end'
+  'sort { |a, b| .. }':
+    'prefix': 'sor'
+    'body': 'sort { |a, b| $0 }'
+  'sort_by { |e| .. }':
+    'prefix': 'sorb'
+    'body': 'sort_by { |${1:e}| $0 }'
+  'task :task_name => [:dependent, :tasks] do .. end':
+    'prefix': 'tas'
+    'body': 'desc "${1:Task description}"\ntask :${2:${3:task_name} => ${4:[:${5:dependent, :tasks}]}} do\n\t$0\nend'
+  'unix_filter { .. }':
+    'prefix': 'unif'
+    'body': 'ARGF.each_line$1 do |${2:line}|\n\t$0\nend'
+  'unless … end':
+    'prefix': 'unless'
+    'body': 'unless ${1:condition}\n\t$0\nend'
+  'until ... end':
+    'prefix': 'until'
+    'body': 'until ${1:condition}\n\t$0\nend'
+  'usage_if()':
+    'prefix': 'usai'
+    'body': 'if ARGV.$1\n\tabort "Usage:  #{\\$PROGRAM_NAME} ${2:ARGS_GO_HERE}"\nend'
+  'usage_unless()':
+    'prefix': 'usau'
+    'body': 'unless ARGV.$1\n\tabort "Usage:  #{\\$PROGRAM_NAME} ${2:ARGS_GO_HERE}"\nend'
+  'when …':
+    'prefix': 'when'
+    'body': 'when ${1:condition}\n\t$0'
+  'while ... end':
+    'prefix': 'while'
+    'body': 'while ${1:condition}\n\t$0\nend'
+  'xmlread(..)':
+    'prefix': 'xml-'
+    'body': 'REXML::Document.new(File.read(${1:"${2:path/to/file}"}))'
+  'xpath(..) { .. }':
+    'prefix': 'xpa'
+    'body': 'elements.each(${1:"${2://XPath}"}) do |${3:node}|\n\t$0\nend'
+  'zip(enums) { |row| .. }':
+    'prefix': 'zip'
+    'body': 'zip(${1:enums}) { |${2:row}| $0 }'
+  'pry':
+    'prefix': 'pry'
+    'body': 'binding.pry'
+'.source.ruby .comment':
+  ':yields:':
+    'prefix': 'y'
+    'body': ' :yields: ${0:arguments}'
+'.text.html.erb':
+  'erb_render_block':
+    'prefix': '='
+    'body': '<%= $1 %>'
+  'erb_exec_block':
+    'prefix': '-'
+    'body': '<% $1 %>'
