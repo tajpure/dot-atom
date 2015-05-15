@@ -18,16 +18,6 @@
   "one-dark-ui":
     layoutMode: "Compact"
   minimap: {}
-  "save-session":
-    dataSaveFolder: "C:\\Users\\Administrator\\.atom\\packages\\save-session\\projects"
-    windowX: 1432
-    windowY: -8
-    windowWidth: 1456
-    windowHeight: 916
-    fullScreen: false
-    projects: [
-      "C:\\Users\\Administrator\\Dropbox\\workspace\\algorithm-kit\\src\\com"
-    ]
   "remember-session":
     x: 1432
     y: -8
