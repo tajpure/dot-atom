@@ -3,7 +3,8 @@ my .atom config for Atom editor.
 
 # How to install?
 ```shell
-./install
+chmod +x install.sh
+./install.sh
 ```
 # Screenshot
 ![Atom](./screenshot.png)
