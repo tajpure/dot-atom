@@ -18,11 +18,6 @@
   "one-dark-ui":
     layoutMode: "Compact"
   minimap: {}
-  "remember-session":
-    x: 1432
-    y: -8
-    width: 1456
-    height: 916
 ".plain.text":
   editor:
     autoIndent: true
