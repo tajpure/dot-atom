@@ -6,6 +6,12 @@
     ]
   editor:
     fontSize: 13
+    invisibles: {}
+  "exception-reporting":
+    userId: "a8427ab1-4c58-ff91-8b4e-75d378fd4b20"
+  welcome:
+    showOnStartup: false
+  "one-dark-ui": {}
 ".plain.text":
   editor:
     autoIndent: true
