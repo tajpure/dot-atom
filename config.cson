@@ -4,8 +4,14 @@
       "one-dark-ui"
       "monokai"
     ]
+    audioBeep: false
   editor:
     fontSize: 13
+    invisibles: {}
+  "exception-reporting":
+    userId: "360313c9-853a-205d-7a9d-a65d0bb199d3"
+  welcome:
+    showOnStartup: false
 ".plain.text":
   editor:
     autoIndent: true
