@@ -2,8 +2,12 @@
 #
 # Atom keymaps work similarly to style sheets. Just as style sheets use
 # selectors to apply styles to elements, Atom keymaps use selectors to associate
+<<<<<<< HEAD
 # keystrokes with events in specific contexts. Unlike style sheets however,
 # each selector can only be declared once.
+=======
+# keystrokes with events in specific contexts.
+>>>>>>> e2c36ca1552a975299ef2bec6cf85d2393c09410
 #
 # You can create a new keybinding in this file by typing "key" and then hitting
 # tab.
@@ -22,6 +26,7 @@
 # * https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 #
 # This file uses CoffeeScript Object Notation (CSON).
+<<<<<<< HEAD
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
@@ -30,3 +35,7 @@
   'ctrl-shift-tab': 'pane:show-previous-item'
 'atom-text-editor':
   'ctrl-d': 'custom:cut-line'
+=======
+# If you are unfamiliar with CSON, you can read more about it here:
+# https://github.com/bevry/cson#what-is-cson
+>>>>>>> e2c36ca1552a975299ef2bec6cf85d2393c09410

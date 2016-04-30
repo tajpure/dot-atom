@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Your Stylesheet
  *
@@ -29,4 +30,42 @@ atom-text-editor {
 // To style other content in the text editor's shadow DOM, use the ::shadow expression
 atom-text-editor::shadow .cursor {
   // border-color: red;
+=======
+/* 等宽字体 */
+@mono-font-family: "ubuntu mono", "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei", sans-serif;
+/* 非等宽字体 */
+@font-family: "ubuntu", "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei", sans-serif;
+html,
+body,
+ol,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+p,
+span,
+pre,
+section,
+input,
+textarea,
+.atom-panel,
+.status-bar,
+.tree-view,
+.title,
+.current-path,
+.tooltip {
+    font-family: @font-family;
+}
+.autocomplete-plus span,
+code,
+.-tree-view-,
+.symbols-view,
+.editor {
+    font-family: @mono-font-family;
+>>>>>>> e2c36ca1552a975299ef2bec6cf85d2393c09410
 }
