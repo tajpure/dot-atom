@@ -1,0 +1,17 @@
+"*":
+  "atom-terminal": {}
+  core:
+    destroyEmptyPanes: false
+    themes: [
+      "one-dark-ui"
+      "monokai"
+    ]
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+  "exception-reporting":
+    userId: "692985b6-5522-0565-06d2-5bb8baf00c5b"
+  welcome:
+    showOnStartup: false
